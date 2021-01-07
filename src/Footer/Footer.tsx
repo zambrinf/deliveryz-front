@@ -1,5 +1,5 @@
 import "./footer-styles.css";
-import { ReactComponent as InstagraIcon } from "./Instagram.svg";
+import { ReactComponent as InstagramIcon } from "./Instagram.svg";
 import { ReactComponent as YoutubeIcon } from "./Youtube.svg";
 import { ReactComponent as LinkedinIcon } from "./Linkedin.svg";
 
@@ -8,15 +8,15 @@ function Footer() {
     <footer className="main-footer">
       App desenvolvido durante a SDS2
       <div className="footer-icons">
-        <a href="" target="_new">
+        <div>
           <YoutubeIcon />
-        </a>
-        <a href="" target="_new">
-          <InstagraIcon />
-        </a>
-        <a href="" target="_new">
+        </div>
+        <div>
+          <InstagramIcon />
+        </div>
+        <div>
           <LinkedinIcon />
-        </a>
+        </div>
       </div>
     </footer>
   );
