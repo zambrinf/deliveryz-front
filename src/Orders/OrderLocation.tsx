@@ -66,7 +66,7 @@ export default function OrderLocation({ onChangeLocation }: Props) {
           center={address.position}
           zoom={15}
           key={address.position.lat} //para recarregar o componente
-          scrollWheelZoom
+          scrollWheelZoom={false}
         >
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

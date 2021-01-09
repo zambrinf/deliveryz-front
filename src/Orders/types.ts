@@ -20,3 +20,11 @@ export type Place = {
     lng: number;
   };
 };
+
+export type ProductId = {
+  id: number;
+};
+
+export type OrderPayload = {
+  products: ProductId[];
+} & OrderLocationData; // concatena os atributos dos dois tipos
