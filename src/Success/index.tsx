@@ -25,7 +25,7 @@ export default function Success(props: SuccessProps) {
           <div className="w3-container">
             {location.state?.orderLocation.address}
           </div>
-          <div className="w3-row success-table">
+          <div className="w3-row success-table w3-center">
             <table className="w3-table">
               <tr>
                 <th>Produto</th>
