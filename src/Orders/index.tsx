@@ -81,7 +81,8 @@ export default function Orders(props: any) {
         <div className="orders-container">
           <StepsHeader />
           <h3 className="orders-loading-products w3-center">
-            Carregando produtos...
+            Carregando produtos... *caso seja o primeiro acesso o Heroku irá
+            inicializar o que pode levar cerca de 30s*
           </h3>
           <OrderLocation
             onChangeLocation={(location) => setOrderLocation(location)}
