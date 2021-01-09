@@ -47,6 +47,16 @@ export default function Orders(props: any) {
   };
 
   const handleSubmit = () => {
+    if (selectedProducts.length === 0) {
+      toast.warning("É necessário selecionar pelo menos um produto");
+      return;
+    }
+
+    if (!orderLocation?.address) {
+      toast.warning("É necessário selecionar um endereço");
+      return;
+    }
+
     const productsIds = selectedProducts.map(({ id }) => ({ id }));
     const payload = {
       ...orderLocation!,
