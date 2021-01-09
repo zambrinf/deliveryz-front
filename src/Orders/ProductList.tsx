@@ -25,10 +25,6 @@ export default function ProductList({
             isSelected={checkSelected(selectedProducts, product)}
           />
         ))}
-        <p className="observacao">
-          ** caso esteja acessando pela primeira vez pode ser necessário
-          aguardar o Heroku inicializar **
-        </p>
       </div>
     </div>
   );
