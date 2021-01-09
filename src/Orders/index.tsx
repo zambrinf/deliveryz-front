@@ -9,8 +9,11 @@ import ProductList from "./ProductList";
 import StepsHeader from "./StepsHeader";
 import { OrderLocationData, Product } from "./types";
 import { toast } from "react-toastify";
+import { Redirect } from "react-router-dom";
+import { SuccessProps } from "../Success";
 
-export default function Orders() {
+export default function Orders(props: any) {
+  const [redirect, setRedirect] = useState<string>();
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
   const [orderLocation, setOrderLocation] = useState<OrderLocationData>();
@@ -46,12 +49,21 @@ export default function Orders() {
     saveOrder(payload)
       .then((response) => {
         toast.error(`Pedido enviado com sucesso! Nº${response.data.id}`);
-        setSelectedProducts([]);
+        setRedirect("/success");
       })
       .catch(() => {
         toast.warning("Erro ao enviar pedido");
       });
   };
+
+  if (redirect) {
+    const props: SuccessProps = {
+      orderLocation: orderLocation!,
+      products: selectedProducts,
+      totalPrice: totalPrice,
+    };
+    return <Redirect to={{ pathname: redirect, state: props }} />;
+  }
 
   return (
     <>
