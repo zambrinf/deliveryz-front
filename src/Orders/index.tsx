@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchProducts, saveOrder } from "../api";
-import Footer from "../Footer/Footer";
+import Footer from "../Footer";
 import { checkSelected } from "./helpers";
 import OrderLocation from "./OrderLocation";
 import "./orders-styles.css";
