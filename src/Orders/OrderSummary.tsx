@@ -1,5 +1,3 @@
-import React from "react";
-import Footer from "../Footer";
 import { formatPrice } from "./helpers";
 
 type Props = {
