@@ -48,7 +48,7 @@ export default function Success(props: SuccessProps) {
                 </td>
               </tr>
             </table>
-            <Link className="success-btn-home" to="/">
+            <Link className="success-btn-home w3-center" to="/">
               INÍCIO
             </Link>
           </div>
