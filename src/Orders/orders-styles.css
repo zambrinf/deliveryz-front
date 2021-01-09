@@ -237,6 +237,13 @@
   margin-right: 5px;
 }
 
+.observacao {
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: -0.015em;
+  color: var(--secondary-color);
+}
+
 .order-summary-make-order {
   width: 220px;
   height: 45px;
