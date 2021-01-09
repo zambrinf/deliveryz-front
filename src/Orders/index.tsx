@@ -13,6 +13,7 @@ import { Redirect } from "react-router-dom";
 import { SuccessProps } from "../Success";
 
 export default function Orders(props: any) {
+  const [loading, setLoading] = useState<boolean>(true);
   const [redirect, setRedirect] = useState<string>();
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
@@ -23,8 +24,14 @@ export default function Orders(props: any) {
 
   useEffect(() => {
     fetchProducts()
-      .then((response) => setProducts(response.data))
-      .catch(() => toast.warning("Erro ao listar produtos"));
+      .then((response) => {
+        setProducts(response.data);
+        setLoading(false);
+      })
+      .catch(() => {
+        toast.warning("Erro ao listar produtos");
+        setRedirect("/");
+      });
   }, []);
 
   const handleSelectProduct = (product: Product) => {
@@ -57,12 +64,37 @@ export default function Orders(props: any) {
   };
 
   if (redirect) {
+    if (loading) {
+      return <Redirect to="/" />;
+    }
     const props: SuccessProps = {
       orderLocation: orderLocation!,
       products: selectedProducts,
       totalPrice: totalPrice,
     };
     return <Redirect to={{ pathname: redirect, state: props }} />;
+  }
+
+  if (loading) {
+    return (
+      <>
+        <div className="orders-container">
+          <StepsHeader />
+          <h3 className="orders-loading-products w3-center">
+            Carregando produtos...
+          </h3>
+          <OrderLocation
+            onChangeLocation={(location) => setOrderLocation(location)}
+          />
+          <OrderSummary
+            amount={selectedProducts.length}
+            totalPrice={totalPrice}
+            onSubmit={handleSubmit}
+          />
+        </div>
+        <Footer />
+      </>
+    );
   }
 
   return (
